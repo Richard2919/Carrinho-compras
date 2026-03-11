@@ -7,8 +7,18 @@ public class Carrinho {
 
         private List<Produto> produtos = new ArrayList<>();
 
-        public void addProdutos(Produto nome){
-           produtos.add(nome);
+        public void addProdutos(Produto p){
+            if (p == null){
+                System.out.println("Nome invalido");
+                return;
+            }
+
+            if (p.getPreco() < 0 || p.getNome().isEmpty()){
+                System.out.println("Erro: dados do produto inválido");
+            }else {
+                produtos.add(p);
+                System.out.println("Produto " + p.getNome() + " adicionado com sucesso!");
+            }
         }
 
         public void listar(){
