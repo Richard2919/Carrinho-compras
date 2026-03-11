@@ -9,12 +9,11 @@ public class Carrinho {
 
         public void addProdutos(Produto p){
             if (p == null){
-                System.out.println("Nome invalido");
-                return;
+                throw new IllegalArgumentException("Erro: O produto não pode ser nulo.");
             }
 
             if (p.getPreco() < 0 || p.getNome().isEmpty()){
-                System.out.println("Erro: dados do produto inválido");
+                throw new IllegalArgumentException("Erro: Dados do produto inválidos (Preço negativo ou nome vazio).");
             }else {
                 produtos.add(p);
                 System.out.println("Produto " + p.getNome() + " adicionado com sucesso!");

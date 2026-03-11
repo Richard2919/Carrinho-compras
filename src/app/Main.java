@@ -24,18 +24,24 @@ public class Main {
             opcao = Integer.parseInt(sc.nextLine());
 
             switch (opcao){
+
                 case 1:
-                    System.out.println("Nome do produto");
-                    String nome = sc.nextLine();
+                    try {
+                        System.out.println("Nome do produto:");
+                        String nome = sc.nextLine();
 
-                    System.out.println("Preço do produto");
-                    double preco = Double.parseDouble(sc.nextLine());
+                        System.out.println("Preço do produto:");
+                        double preco = Double.parseDouble(sc.nextLine());
 
-                    Produto novoProduto = new Produto(nome, preco);
+                        carrinho.addProdutos(new Produto(nome, preco));
 
-                    carrinho.addProdutos(novoProduto);
+                    } catch (NumberFormatException e) {
+                        System.out.println("AVISO: Você deve digitar um número válido!");
 
-                    System.out.println("Produto adicionado com sucesso");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println("AVISO: " + e.getMessage());
+                    }
+
                     break;
 
                 case 2:
